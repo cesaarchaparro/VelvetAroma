@@ -1,0 +1,41 @@
+services:
+  app:
+    build: .
+    ports:
+      - "8080:80"
+    env_file: .env.docker
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      # Las fotos subidas desde el panel sobreviven a reinicios y reconstrucciones
+      - storage_public:/var/www/html/storage/app/public
+    restart: unless-stopped
+
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_DATABASE: velvetaroma
+      MYSQL_USER: velvet
+      MYSQL_PASSWORD: velvet_pass
+      MYSQL_ROOT_PASSWORD: root_pass
+    volumes:
+      - db_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost -uroot -p$$MYSQL_ROOT_PASSWORD --silent"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+    restart: unless-stopped
+
+  # Solo para pruebas: atrapa los correos (como el de recuperar contraseña)
+  # y los muestra en http://localhost:8025
+  mailpit:
+    image: axllent/mailpit
+    ports:
+      - "8025:8025"
+    restart: unless-stopped
+
+volumes:
+  storage_public:
+  db_data:

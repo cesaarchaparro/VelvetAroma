@@ -1,0 +1,17 @@
+.git
+.gitignore
+bootstrap/cache/*.php
+node_modules
+vendor
+.env
+.env.*
+public/hot
+public/build
+public/storage
+storage/logs/*
+storage/framework/cache/data/*
+storage/framework/sessions/*
+storage/framework/views/*
+tests
+docker-compose.yml
+Dockerfile

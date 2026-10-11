@@ -1,0 +1,1098 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==========================================================
+   VELVET AROMA — blanco y negro
+   Editorial, mucho aire, líneas finas, cero color.
+   ========================================================== */
+
+:root {
+    --negro: #0c0c0c;
+    --blanco: #ffffff;
+    --gris-texto: #5c5c5c;
+    --gris-linea: #d9d9d9;
+    --gris-fondo: #f4f4f4;
+
+    --f-display: "Fraunces", Georgia, "Times New Roman", serif;
+    --f-texto: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+    --ancho: 1120px;
+}
+
+/* ---------- Base ---------- */
+html { scroll-behavior: smooth; }
+
+body {
+    margin: 0;
+    background: var(--blanco);
+    color: var(--negro);
+    font-family: var(--f-texto);
+    font-size: 1rem;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+    font-family: var(--f-display);
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: 0.01em;
+    margin: 0 0 1.25rem;
+}
+
+h2 { font-size: clamp(1.75rem, 3.5vw, 2.5rem); }
+h3 { font-size: 1.3rem; }
+
+p { margin: 0 0 1rem; max-width: 60ch; }
+
+a { color: inherit; }
+
+:focus-visible {
+    outline: 2px solid var(--negro);
+    outline-offset: 3px;
+}
+
+.contenedor {
+    width: min(92%, var(--ancho));
+    margin-inline: auto;
+}
+
+/* ---------- Cabecera ---------- */
+header {
+    padding: 2.5rem 1rem 1.75rem;
+    text-align: center;
+}
+
+header .titulo {
+    margin: 0;
+    font-size: clamp(2rem, 5vw, 3.1rem);
+    font-weight: 300;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+header .titulo span {
+    font-style: italic;
+    text-transform: none;
+    letter-spacing: 0.04em;
+}
+
+/* ---------- Navegación ---------- */
+.nav-bg {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: var(--blanco);
+    border-top: 1px solid var(--negro);
+    border-bottom: 1px solid var(--gris-linea);
+}
+
+.navegacion-principal {
+    display: flex;
+    justify-content: center;
+}
+
+.menu-enlaces {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0 3rem;
+}
+
+/* El botón "Menú" solo existe en celular */
+.menu-boton {
+    display: none;
+}
+
+.navegacion-principal a {
+    padding: 1rem 0;
+    text-decoration: none;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    border-bottom: 1px solid transparent;
+    margin-bottom: -1px;
+    transition: border-color 0.2s;
+}
+
+.navegacion-principal a:hover {
+    border-bottom-color: var(--negro);
+}
+
+/* ---------- Hero ---------- */
+.hero {
+    position: relative;
+    isolation: isolate;
+    background: var(--negro);
+    color: var(--blanco);
+    padding: clamp(1.25rem, 4vw, 3rem);
+}
+
+/* Imagen de fondo: se define desde Home.jsx con --hero-img.
+   Si no hay imagen, el hero queda negro liso. */
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+        linear-gradient(rgba(12, 12, 12, 0.55), rgba(12, 12, 12, 0.55)),
+        var(--hero-img, none) center / cover no-repeat;
+}
+
+.contenido-hero {
+    max-width: 960px;
+    margin-inline: auto;
+    padding: clamp(3rem, 9vw, 6.5rem) clamp(1.25rem, 5vw, 3rem);
+    display: grid;
+    justify-items: center;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.55);
+}
+
+.contenido-hero .titulo {
+    font-size: clamp(2.2rem, 6.5vw, 4.5rem);
+    font-weight: 300;
+    max-width: 15ch;
+    margin-bottom: 2rem;
+}
+
+.contenido-hero .titulo span {
+    font-style: italic;
+}
+
+.contenido-hero svg {
+    width: 28px;
+    height: 28px;
+    color: var(--blanco);
+    margin-bottom: 0.5rem;
+}
+
+.contenido-hero p {
+    margin-bottom: 2.25rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+    letter-spacing: 0.12em;
+}
+
+/* ---------- Botones ---------- */
+.boton {
+    display: inline-block;
+    padding: 0.95rem 2.5rem;
+    background: var(--negro);
+    color: var(--blanco);
+    border: 1px solid var(--negro);
+    border-radius: 0;
+    font-family: var(--f-texto);
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.25s, color 0.25s;
+}
+
+.boton:hover {
+    background: var(--blanco);
+    color: var(--negro);
+}
+
+.hero .boton {
+    background: var(--blanco);
+    border-color: var(--blanco);
+    color: var(--negro);
+}
+
+.hero .boton:hover {
+    background: transparent;
+    color: var(--blanco);
+}
+
+/* ---------- Contenido principal ---------- */
+main.contenedor {
+    padding-block: clamp(3.5rem, 8vw, 6rem);
+}
+
+.sombra { box-shadow: none; }
+
+main > h2:first-child {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+main > section,
+main > .servicios {
+    margin-top: clamp(3.5rem, 8vw, 6rem);
+}
+
+/* ---------- Servicios ---------- */
+.servicios {
+    display: grid;
+    gap: 3rem;
+    border-top: 1px solid var(--negro);
+    border-bottom: 1px solid var(--gris-linea);
+    padding-block: 3rem;
+}
+
+main > .servicios {
+    margin-top: 0;
+}
+
+.servicio {
+    text-align: center;
+}
+
+.servicio h3 { margin-bottom: 1.25rem; }
+
+.servicio p {
+    margin-inline: auto;
+    color: var(--gris-texto);
+    font-size: 0.95rem;
+}
+
+.iconos {
+    display: grid;
+    place-items: center;
+    margin-bottom: 1.25rem;
+}
+
+.iconos svg {
+    width: 52px;
+    height: 52px;
+    fill: var(--negro);
+}
+
+.iconos svg [stroke] { stroke: var(--negro); }
+
+@media (min-width: 768px) {
+    .servicios {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0;
+    }
+    .servicio { padding-inline: 2rem; }
+    .servicio + .servicio { border-left: 1px solid var(--gris-linea); }
+}
+
+/* ---------- Catálogo ---------- */
+.catalogo > h2,
+.destacados > h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.productos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 3rem 2rem;
+}
+
+.producto {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.producto img {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    background: var(--gris-fondo);
+    margin-bottom: 1.25rem;
+}
+
+.producto h3 {
+    margin-bottom: 0.4rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--negro);
+}
+
+.producto p {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin: 0 0 1.5rem;
+    font-size: 0.92rem;
+    color: var(--gris-texto);
+}
+
+.producto .boton {
+    margin-top: auto;
+    align-self: flex-start;
+    padding: 0.75rem 1.75rem;
+    background: transparent;
+    color: var(--negro);
+}
+
+.producto .boton:hover {
+    background: var(--negro);
+    color: var(--blanco);
+}
+
+.producto .precio {
+    margin: 0 0 1.25rem;
+    font-family: var(--f-display);
+    font-size: 1.15rem;
+    color: var(--negro);
+}
+
+/* ---------- Detalle de producto ---------- */
+.volver {
+    display: inline-block;
+    margin-bottom: 2rem;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+}
+
+.volver:hover {
+    border-bottom-color: var(--negro);
+}
+
+.detalle {
+    display: grid;
+    gap: 2.5rem;
+}
+
+.detalle img {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    background: var(--gris-fondo);
+}
+
+.detalle-info h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 300;
+    margin-bottom: 0.75rem;
+}
+
+.detalle-info .precio-detalle {
+    margin: 0 0 1.75rem;
+    padding-bottom: 1.75rem;
+    border-bottom: 1px solid var(--gris-linea);
+    font-family: var(--f-display);
+    font-size: 1.6rem;
+}
+
+.detalle-info p {
+    color: var(--gris-texto);
+}
+
+.detalle-info .boton {
+    margin-top: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .detalle {
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: start;
+    }
+}
+
+/* ---------- Formulario ---------- */
+.formulario fieldset {
+    margin: 0;
+    padding: clamp(1.5rem, 4vw, 3rem);
+    border: 1px solid var(--negro);
+    border-radius: 0;
+}
+
+.formulario legend {
+    padding-inline: 1rem;
+    font-family: var(--f-display);
+    font-size: 1.15rem;
+}
+
+.contenedor-campos {
+    display: grid;
+    gap: 1.75rem;
+}
+
+@media (min-width: 768px) {
+    .contenedor-campos {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem 2.5rem;
+    }
+    .contenedor-campos .campo:last-child { grid-column: 1 / -1; }
+}
+
+.campo label {
+    display: block;
+    margin-bottom: 0.15rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gris-texto);
+}
+
+.input-text {
+    width: 100%;
+    padding: 0.6rem 0;
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid var(--gris-linea);
+    border-radius: 0;
+    font: inherit;
+    color: var(--negro);
+    transition: border-color 0.2s;
+}
+
+.input-text::placeholder { color: #9a9a9a; }
+
+.input-text:focus {
+    outline: none;
+    border-bottom-color: var(--negro);
+    box-shadow: 0 1px 0 0 var(--negro);
+}
+
+textarea.input-text {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.alinear-derecha {
+    margin-top: 2.25rem;
+    text-align: right;
+}
+
+.flex {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.w-sm-100 { width: 100%; }
+
+@media (min-width: 768px) {
+    .w-sm-100 { width: auto; }
+}
+
+/* ---------- Paginación ---------- */
+.paginacion {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 3.5rem;
+}
+
+.paginacion a,
+.paginacion span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.75rem;
+    height: 2.75rem;
+    padding-inline: 0.9rem;
+    border: 1px solid var(--gris-linea);
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--negro);
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.paginacion a:hover {
+    border-color: var(--negro);
+}
+
+.paginacion a.activo {
+    background: var(--negro);
+    border-color: var(--negro);
+    color: var(--blanco);
+}
+
+.paginacion .deshabilitado {
+    color: #b5b5b5;
+}
+
+.paginacion .puntos {
+    border-color: transparent;
+}
+
+/* ---------- Nosotros ---------- */
+.nosotros {
+    padding-block: clamp(3.5rem, 8vw, 6rem);
+    text-align: center;
+    scroll-margin-top: 4rem; /* evita que el menú fijo tape el título */
+}
+
+.nosotros .contenedor {
+    width: min(100%, 720px);
+}
+
+.nosotros h2 {
+    margin-bottom: 2rem;
+}
+
+.nosotros h2::before {
+    content: "";
+    display: block;
+    width: 48px;
+    height: 1px;
+    margin: 0 auto 1.75rem;
+    background: var(--negro);
+}
+
+.nosotros p {
+    margin-inline: auto;
+    max-width: 58ch;
+    color: var(--gris-texto);
+}
+
+.nosotros p:first-of-type {
+    font-family: var(--f-display);
+    font-size: clamp(1.2rem, 2.4vw, 1.5rem);
+    font-weight: 300;
+    line-height: 1.55;
+    color: var(--negro);
+    margin-bottom: 1.75rem;
+}
+
+.aviso-ok {
+    margin: 0 0 2rem;
+    max-width: none;
+    padding: 1rem 1.25rem;
+    background: var(--gris-fondo);
+    border-left: 2px solid var(--negro);
+    font-size: 0.95rem;
+}
+
+.error-campo {
+    margin: 0.4rem 0 0;
+    max-width: none;
+    font-size: 0.85rem;
+    font-style: italic;
+    color: var(--negro);
+}
+
+.error-campo::before {
+    content: "— ";
+}
+
+.input-text[aria-invalid="true"] {
+    border-bottom: 2px solid var(--negro);
+}
+
+.boton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* ---------- Footer ---------- */
+.footer {
+    padding: 4rem 0 2rem;
+    background: var(--negro);
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+}
+
+.footer-contenido {
+    display: grid;
+    gap: 2.5rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.footer p {
+    margin: 0 0 0.5rem;
+    max-width: none;
+}
+
+.footer-nombre {
+    margin-bottom: 1rem;
+    font-family: var(--f-display);
+    font-size: 1.6rem;
+    font-weight: 300;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--blanco);
+}
+
+.footer-nombre span {
+    font-style: italic;
+    letter-spacing: 0.04em;
+    text-transform: none;
+}
+
+.footer-titulo {
+    margin-bottom: 1rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--blanco);
+}
+
+.footer ul {
+    display: grid;
+    gap: 0.6rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.footer a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+}
+
+.footer a:hover {
+    color: var(--blanco);
+    border-bottom-color: var(--blanco);
+}
+
+.footer .footer-legal {
+    margin: 0 auto;
+    padding-top: 2rem;
+    text-align: center;
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+}
+
+@media (min-width: 768px) {
+    .footer-contenido {
+        grid-template-columns: 2fr 1fr 1fr;
+        gap: 3rem;
+    }
+}
+
+/* ---------- Carrito ---------- */
+.contador {
+    display: inline-grid;
+    place-items: center;
+    min-width: 1.25rem;
+    height: 1.25rem;
+    margin-left: 0.5rem;
+    padding-inline: 0.35rem;
+    background: var(--negro);
+    border-radius: 999px;
+    color: var(--blanco);
+    font-size: 0.7rem;
+    letter-spacing: 0;
+    line-height: 1;
+}
+
+.acciones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: auto;
+}
+
+.acciones .boton {
+    flex: 1 1 auto;
+    padding: 0.8rem 1rem;
+    margin-top: 0;
+}
+
+.producto .boton-lleno {
+    background: var(--negro);
+    color: var(--blanco);
+}
+
+.producto .boton-lleno:hover {
+    background: var(--blanco);
+    color: var(--negro);
+}
+
+.boton-borde {
+    background: transparent;
+    color: var(--negro);
+}
+
+.boton-borde:hover {
+    background: var(--negro);
+    color: var(--blanco);
+}
+
+.carrito-lista {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-top: 1px solid var(--negro);
+}
+
+.carrito-item {
+    display: grid;
+    grid-template-columns: 88px 1fr auto;
+    gap: 1rem 1.5rem;
+    align-items: start;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--gris-linea);
+}
+
+.carrito-item img {
+    width: 88px;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    background: var(--gris-fondo);
+}
+
+.carrito-item h3 {
+    margin: 0 0 0.25rem;
+    font-size: 1.15rem;
+}
+
+.precio-unitario {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--gris-texto);
+}
+
+.cantidad {
+    display: inline-flex;
+    margin: 0.9rem 1.25rem 0 0;
+    border: 1px solid var(--gris-linea);
+}
+
+.cantidad button {
+    width: 2.5rem;
+    height: 2.5rem;
+    background: none;
+    border: 0;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+.cantidad button:hover {
+    background: var(--gris-fondo);
+}
+
+.cantidad span {
+    display: grid;
+    place-items: center;
+    min-width: 2.5rem;
+    font-size: 0.95rem;
+}
+
+.quitar {
+    padding: 0;
+    background: none;
+    border: 0;
+    font: inherit;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    color: var(--gris-texto);
+    cursor: pointer;
+}
+
+.quitar:hover {
+    color: var(--negro);
+}
+
+.subtotal {
+    margin: 0;
+    font-family: var(--f-display);
+    font-size: 1.15rem;
+    text-align: right;
+}
+
+.carrito-resumen {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 1.75rem 0 1rem;
+    font-family: var(--f-display);
+    font-size: 1.6rem;
+}
+
+.carrito-nota {
+    margin: 0 0 1rem;
+    max-width: none;
+    font-size: 0.9rem;
+    color: var(--gris-texto);
+}
+
+.carrito-acciones {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.carrito-vacio {
+    padding-block: 3rem;
+    text-align: center;
+}
+
+.carrito-vacio p {
+    margin-inline: auto;
+    color: var(--gris-texto);
+}
+
+@media (max-width: 560px) {
+    .carrito-item {
+        grid-template-columns: 88px 1fr;
+    }
+    .subtotal {
+        grid-column: 2;
+        text-align: left;
+    }
+    .carrito-acciones .boton {
+        width: 100%;
+    }
+}
+
+/* ---------- Búsqueda y filtros ---------- */
+.filtros {
+    display: grid;
+    justify-items: center;
+    gap: 1.75rem;
+    margin-bottom: 3rem;
+}
+
+.buscador {
+    width: min(100%, 420px);
+}
+
+.buscador .input-text {
+    text-align: center;
+    border-bottom-color: var(--negro);
+}
+
+.filtros-categorias {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.filtro {
+    padding: 0.65rem 1.5rem;
+    background: transparent;
+    border: 1px solid var(--gris-linea);
+    color: var(--negro);
+    font: inherit;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.filtro:hover {
+    border-color: var(--negro);
+}
+
+.filtro.activo {
+    background: var(--negro);
+    border-color: var(--negro);
+    color: var(--blanco);
+}
+
+.productos > .sin-resultados {
+    grid-column: 1 / -1;
+    margin: 2rem auto;
+    text-align: center;
+    color: var(--gris-texto);
+}
+
+/* ---------- Acceso (login y recuperación) ---------- */
+.menu-enlaces a.enlace-admin {
+    align-self: center;
+    margin: 0.5rem 0 0.5rem 1rem;
+    padding: 0.5rem 1.25rem;
+    border: 1px solid var(--negro);
+}
+
+.menu-enlaces a.enlace-admin:hover {
+    background: var(--negro);
+    border-color: var(--negro);
+    color: var(--blanco);
+}
+
+.auth {
+    padding-block: clamp(2.5rem, 7vw, 5rem);
+}
+
+.auth-caja {
+    width: min(100%, 460px);
+    margin-inline: auto;
+    padding: clamp(1.75rem, 5vw, 2.75rem);
+    border: 1px solid var(--negro);
+}
+
+.auth-caja h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.auth-texto {
+    margin: 0 0 1.5rem;
+    color: var(--gris-texto);
+    font-size: 0.95rem;
+}
+
+.auth-campos {
+    grid-template-columns: 1fr !important;
+}
+
+.auth-campos .campo:last-child {
+    grid-column: auto !important;
+}
+
+.auth-recordar {
+    display: block;
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    color: var(--gris-texto);
+    cursor: pointer;
+}
+
+.auth-acciones {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.25rem;
+    margin-top: 2rem;
+}
+
+.auth-enlace {
+    font-size: 0.85rem;
+    color: var(--gris-texto);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+.auth-enlace:hover {
+    color: var(--negro);
+}
+
+.auth-volver {
+    margin: 2rem 0 0;
+    text-align: center;
+    font-size: 0.85rem;
+}
+
+.auth-volver a {
+    color: var(--gris-texto);
+    text-decoration: none;
+}
+
+.auth-volver a:hover {
+    color: var(--negro);
+}
+
+@media (max-width: 480px) {
+    .auth-acciones {
+        flex-direction: column-reverse;
+        align-items: stretch;
+        text-align: center;
+    }
+    .auth-acciones .boton {
+        width: 100%;
+    }
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 767px) {
+    /* Menú plegable */
+    .navegacion-principal {
+        flex-direction: column;
+    }
+
+    .menu-boton {
+        display: block;
+        width: 100%;
+        padding: 1rem 0;
+        background: none;
+        border: 0;
+        color: var(--negro);
+        font: inherit;
+        font-size: 0.78rem;
+        font-weight: 500;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        text-align: center;
+        cursor: pointer;
+    }
+
+    .menu-enlaces {
+        display: none;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        border-top: 1px solid var(--gris-linea);
+    }
+
+    .menu-enlaces.abierto {
+        display: flex;
+    }
+
+    .navegacion-principal .menu-enlaces a {
+        padding: 1rem 0;
+        margin-bottom: 0;
+        border-bottom: 0;
+        text-align: center;
+    }
+
+    .navegacion-principal .menu-enlaces a:hover {
+        background: var(--gris-fondo);
+    }
+
+    /* Servicios: separadores horizontales en vez de verticales */
+    .servicio + .servicio {
+        padding-top: 3rem;
+        border-top: 1px solid var(--gris-linea);
+    }
+}
+
+@media (max-width: 560px) {
+    /* Productos en 1 columna */
+    .productos {
+        grid-template-columns: 1fr;
+    }
+
+    .paginacion a,
+    .paginacion span {
+        min-width: 2.5rem;
+        height: 2.5rem;
+        padding-inline: 0.7rem;
+    }
+}
+
+@media (max-width: 480px) {
+    /* El nombre de la marca no debe desbordar la pantalla */
+    header {
+        padding-top: 1.75rem;
+    }
+
+    header .titulo {
+        font-size: 1.6rem;
+        letter-spacing: 0.12em;
+    }
+
+    .contenido-hero .titulo {
+        font-size: 2.1rem;
+    }
+
+    .boton {
+        padding-inline: 1.75rem;
+    }
+}
+
+/* ---------- Accesibilidad ---------- */
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition: none !important; }
+}
