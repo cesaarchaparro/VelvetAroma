@@ -21,6 +21,7 @@ RUN npm run build
 # ---------- 3) Imagen final: Apache + PHP ----------
 FROM php:8.4-apache
 
+COPY uploads.ini /usr/local/etc/php/conf.d/uploads.ini
 RUN apt-get update && apt-get install -y --no-install-recommends \
         libzip-dev libpng-dev libjpeg-dev libfreetype6-dev unzip \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \

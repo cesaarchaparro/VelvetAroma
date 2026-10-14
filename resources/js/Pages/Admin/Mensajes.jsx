@@ -19,7 +19,7 @@ export default function Mensajes({ mensajes, flash }) {
     };
 
     return (
-        <div className="container">
+        <div className="admin-contenedor">
             <p>
                 <Link href="/admin/productos">← Volver a productos</Link>
                 {' · '}
@@ -46,20 +46,22 @@ export default function Mensajes({ mensajes, flash }) {
                     {lista.length > 0 ? (
                         lista.map((m) => (
                             <tr key={m.id}>
-                                <td>{formatearFecha(m.created_at)}</td>
-                                <td>
-                                    <strong>{m.nombre}</strong>
-                                    <br />
-                                    <a href={`mailto:${m.email}`}>{m.email}</a>
-                                    {m.telefono && (
-                                        <>
-                                            <br />
-                                            <a href={`tel:${m.telefono}`}>{m.telefono}</a>
-                                        </>
-                                    )}
+                                <td data-label="Fecha">{formatearFecha(m.created_at)}</td>
+                                <td data-label="Contacto">
+                                    <div>
+                                        <strong>{m.nombre}</strong>
+                                        <br />
+                                        <a href={`mailto:${m.email}`}>{m.email}</a>
+                                        {m.telefono && (
+                                            <>
+                                                <br />
+                                                <a href={`tel:${m.telefono}`}>{m.telefono}</a>
+                                            </>
+                                        )}
+                                    </div>
                                 </td>
-                                <td style={{ whiteSpace: 'pre-wrap' }}>{m.mensaje}</td>
-                                <td>
+                                <td data-label="Mensaje" style={{ whiteSpace: 'pre-wrap' }}>{m.mensaje}</td>
+                                <td data-label="Acción">
                                     <button
                                         type="button"
                                         className="btn-delete"

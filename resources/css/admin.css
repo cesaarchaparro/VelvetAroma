@@ -4,13 +4,21 @@ body {
     padding: 40px 20px;
 }
 
-.container {
-    max-width: 500px;
-    margin: 0 auto;
+.admin-contenedor {
+    box-sizing: border-box;
+    width: min(100%, 1040px);
+    margin: 2rem auto;
+    padding: clamp(1.25rem, 4vw, 2.5rem);
     background: #fff;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border: 1px solid #e5e5e5;
+}
+
+@media (max-width: 600px) {
+    .admin-contenedor {
+        margin: 0;
+        border-left: 0;
+        border-right: 0;
+    }
 }
 
 h2 {
@@ -108,4 +116,97 @@ button:hover {
 
 .btn-delete:hover {
     background-color: #c82333;
+}
+
+/* ==========================================================
+   PANEL ADMIN - ajustes para celular
+   Pega este bloque AL FINAL de resources/css/admin.css
+   ========================================================== */
+
+/* Que nada se salga de la pantalla */
+.admin-contenedor {
+    overflow-wrap: anywhere;
+}
+
+.admin-contenedor input:not([type="checkbox"]):not([type="file"]),
+.admin-contenedor textarea,
+.admin-contenedor select {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.admin-contenedor input[type="file"] {
+    max-width: 100%;
+}
+
+.admin-contenedor progress {
+    width: 100%;
+}
+
+@media (max-width: 700px) {
+    .admin-contenedor form button[type="submit"] {
+        width: 100%;
+        padding-block: 0.8rem;
+    }
+
+    /* La tabla se convierte en una lista de tarjetas */
+    .tabla-productos,
+    .tabla-productos tbody,
+    .tabla-productos tr,
+    .tabla-productos td {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .tabla-productos thead {
+        position: absolute;
+        left: -9999px; /* oculto a la vista, pero accesible */
+    }
+
+    .tabla-productos tr {
+        margin-bottom: 1rem;
+        padding: 0.5rem 0.9rem;
+        border: 1px solid #e5e5e5;
+        background: #fff;
+    }
+
+    .tabla-productos td {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 0.6rem 0;
+        border: 0;
+        border-bottom: 1px solid #f0f0f0;
+        text-align: right;
+    }
+
+    .tabla-productos td:last-child {
+        border-bottom: 0;
+    }
+
+    .tabla-productos td::before {
+        content: attr(data-label);
+        flex-shrink: 0;
+        font-weight: 600;
+        text-align: left;
+    }
+
+    .tabla-productos td[colspan] {
+        justify-content: center;
+    }
+
+    .tabla-productos td[colspan]::before {
+        content: none;
+    }
+
+    /* Mensajes: el texto largo ocupa su propia línea */
+    .tabla-productos td[data-label="Mensaje"] {
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+        min-width: 0 !important;
+    }
 }

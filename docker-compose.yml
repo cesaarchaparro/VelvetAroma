@@ -17,8 +17,8 @@ services:
     environment:
       MYSQL_DATABASE: velvetaroma
       MYSQL_USER: velvet
-      MYSQL_PASSWORD: velvet_pass
-      MYSQL_ROOT_PASSWORD: root_pass
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
     volumes:
       - db_data:/var/lib/mysql
     healthcheck:

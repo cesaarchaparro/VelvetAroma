@@ -47,7 +47,7 @@ export default function Productos({ productos, flash, errors }) {
     };
 
     return (
-        <div className="container">
+        <div className="admin-contenedor">
             <p>
                 <Link href="/admin/mensajes">Ver mensajes de contacto →</Link>
                 {' · '}
@@ -171,7 +171,7 @@ export default function Productos({ productos, flash, errors }) {
                     {productos && productos.length > 0 ? (
                         productos.map((prod) => (
                             <tr key={prod.id}>
-                                <td>
+                                <td data-label="Imagen">
                                     <img
                                         src={`/storage/${prod.imagen}`}
                                         alt={prod.nombre}
@@ -180,10 +180,10 @@ export default function Productos({ productos, flash, errors }) {
                                         style={{ objectFit: 'cover', borderRadius: '4px' }}
                                     />
                                 </td>
-                                <td>{prod.nombre}</td>
-                                <td>{formatearPrecio(prod.precio)}</td>
-                                <td style={{ textTransform: 'capitalize' }}>{prod.categoria}</td>
-                                <td>
+                                <td data-label="Nombre">{prod.nombre}</td>
+                                <td data-label="Precio">{formatearPrecio(prod.precio)}</td>
+                                <td data-label="Categoría" style={{ textTransform: 'capitalize' }}>{prod.categoria}</td>
+                                <td data-label="Destacado">
                                     <button
                                         type="button"
                                         onClick={() => handleDestacado(prod.id)}
@@ -191,7 +191,7 @@ export default function Productos({ productos, flash, errors }) {
                                         {prod.destacado ? '★ Quitar' : '☆ Destacar'}
                                     </button>
                                 </td>
-                                <td>
+                                <td data-label="Acción">
                                     <button
                                         type="button"
                                         className="btn-delete"
